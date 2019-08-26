@@ -1,0 +1,48 @@
+<div class="text-center">
+  <h4 class="text-muted">Welcome to UnSplash API Gallery</h4>
+</div>
+
+<form (ngSubmit)="onSearch()" #locref='ngForm'>
+    <div class="input-group">
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Search by username" 
+        ngModel 
+        name="searchText">
+        <span class="input-group-btn">
+             <button class="btn btn-primary" type="submit">Search</button>
+        </span>
+     </div>
+</form>
+<button class="btn btn-primary" type="button" (click)="getMyCollection()" style="margin-left:45%;">My Collections</button>
+
+
+<div class="row">
+  <div class="col-xs-4" *ngIf="loadedPosts.length < 1 && !isFetching">
+    <p>No Posts Available!!</p>
+  </div>
+  <div class="col-xs-4" *ngIf="loadedPosts.length >= 1 && !isFetching">
+    <div class="card" style="width: 18rem;display: inline-block" *ngFor="let posts of loadedPosts">
+      <img class="card-img-top" [src]="posts.urls.full+'.jpg'" [alt]="posts.alt_description" style="height:200px;">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{posts.user.username}}
+        </h5>
+        <h6 class="card-text">
+         {{posts.alt_description}}
+        </h6>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="isFetching && !error">loading...</p>
+  <div class="alert alert-danger" *ngIf="error">
+    <h1>An Error Occured!!</h1>
+    <p>{{error}}</p>
+  </div>
+</div>
+
+<div class="centerAlign">
+<ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [boundaryLinks]="true" (click)='onSearch()'></ngb-pagination>
+<pre>Current Page : {{page}}</pre>
+</div>
