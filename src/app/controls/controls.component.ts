@@ -25,6 +25,7 @@ export class ControlsComponent  {
       success => {this.deletionError=false;},
       error => {this.deletionError=true;}
     );
+
   }
 }
 
