@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {Post} from './model/post.model';
+import {GET} from './model/get.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +9,7 @@ import {Post} from './model/post.model';
 export class AppComponent implements OnInit{
   constructor(private http: HttpClient) { }
 
-  loadedPosts:Post[]=[];
+  loadedPosts:GET[]=[];
 
   ngOnInit(){
     this.fetchPosts();

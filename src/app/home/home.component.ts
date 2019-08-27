@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from '../model/post.model';
+import { GET } from '../model/get.model';
 import { ApiService } from '../service/post.service';
 import { NgForm } from '@angular/forms';
 
@@ -11,11 +11,10 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private apiService: ApiService) {
-
   }
 
   @ViewChild('locref', { static: true }) search: NgForm;
-  loadedPosts: Post[] = [];
+  loadedPosts: GET[] = [];
   isFetching = false;
   pageSize = 10;
   error = null;

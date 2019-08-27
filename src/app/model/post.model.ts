@@ -1,5 +1,4 @@
 export interface Post{
-urls:string;
-user:string;
-alt_description:string;
+    collection_id:string;
+    photo_id:string;
 }
